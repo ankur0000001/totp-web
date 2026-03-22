@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOTP Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-8W9a1ezx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-MkwV9BWc.css">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <span class="badge">2FA</span>
+        <h1>TOTP Generator</h1>
+        <p class="subtitle">Paste your secret key to generate a one-time password</p>
+      </header>
+
+      <main>
+        <div class="input-group">
+          <label for="secret">Secret Key</label>
+          <div class="input-wrap">
+            <input
+              id="secret"
+              type="text"
+              placeholder="e.g. JBSWY3DPEHPK3PXP"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button id="clear-btn" class="clear-btn" title="Clear">✕</button>
+          </div>
+        </div>
+
+        <div id="result" class="result hidden">
+          <div class="totp-display">
+            <span id="totp-code" class="totp-code">------</span>
+            <button id="copy-btn" class="copy-btn" title="Copy code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span id="copy-label">Copy</span>
+            </button>
+          </div>
+          <div class="timer-bar-wrap">
+            <div id="timer-bar" class="timer-bar"></div>
+          </div>
+          <p id="timer-text" class="timer-text">Refreshes in <strong id="seconds">30</strong>s</p>
+        </div>
+
+        <div id="error" class="error hidden">
+          <span>⚠ Invalid secret key. Use a valid Base32 string.</span>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
